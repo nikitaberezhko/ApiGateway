@@ -4,6 +4,7 @@ using ContainerService.Contracts.Request.Container;
 using ContainerService.Contracts.Response.Container;
 using Infrastructure.RefitClients;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Authorization;
 
 namespace WebApi.Controllers;
 
@@ -12,6 +13,7 @@ namespace WebApi.Controllers;
 [ApiVersion(1)]
 public class ContainerController(IContainerApi containerApi) : ControllerBase
 {
+    [Authorization(2)]
     [HttpPost]
     public async Task<ActionResult<CommonResponse<CreateContainerResponse>>> Create(
         CreateContainerRequest request)
@@ -21,7 +23,7 @@ public class ContainerController(IContainerApi containerApi) : ControllerBase
         return response;
     }
 
-    
+    [Authorization(2)]
     [HttpPut]
     public async Task<ActionResult<CommonResponse<UpdateContainerResponse>>> Update(
         UpdateContainerRequest request)
@@ -31,7 +33,7 @@ public class ContainerController(IContainerApi containerApi) : ControllerBase
         return response;
     }
 
-
+    [Authorization(2)]
     [HttpDelete("{id}")]
     public async Task<ActionResult<CommonResponse<DeleteContainerResponse>>> Delete(
         [FromRoute] DeleteContainerRequest request)
@@ -41,16 +43,17 @@ public class ContainerController(IContainerApi containerApi) : ControllerBase
         return response;
     }
 
-
+    [Authorization(1,2)]
     [HttpGet("{id}")]
-    public async Task<ActionResult<CommonResponse<GetContainerByIdResponse>>> GetById([FromRoute] GetContainerByIdRequest request)
+    public async Task<ActionResult<CommonResponse<GetContainerByIdResponse>>> GetById(
+        [FromRoute] GetContainerByIdRequest request)
     {
         var response = await containerApi.GetContainerById(request);
         
         return response;
     }
     
-    
+    [Authorization(1,2)]
     [HttpGet("iso-numbers/{isoNumber}")]
     public async Task<ActionResult<CommonResponse<GetContainerByIsoResponse>>> GetByIso(
         [FromRoute] GetContainerByIsoRequest request)
@@ -60,7 +63,7 @@ public class ContainerController(IContainerApi containerApi) : ControllerBase
         return response;
     }
     
-    
+    [Authorization(1,2)]
     [HttpGet]
     public async Task<ActionResult<CommonResponse<GetContainersByTypeIdResponse>>> GetByTypeId(
         GetContainersByTypeIdRequest request)

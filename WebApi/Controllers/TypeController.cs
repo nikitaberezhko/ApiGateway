@@ -4,6 +4,7 @@ using ContainerService.Contracts.Request.Type;
 using ContainerService.Contracts.Response.Type;
 using Infrastructure.RefitClients;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Authorization;
 
 namespace WebApi.Controllers;
 
@@ -12,6 +13,7 @@ namespace WebApi.Controllers;
 [ApiVersion(1)]
 public class TypeController(IContainerApi containerApi) : ControllerBase
 {
+    [Authorization(2)]
     [HttpPost]
     public async Task<ActionResult<CommonResponse<CreateTypeResponse>>> Create(
         CreateTypeRequest request)
@@ -21,7 +23,7 @@ public class TypeController(IContainerApi containerApi) : ControllerBase
         return response;
     }
     
-    
+    [Authorization(2)]
     [HttpPut]
     public async Task<ActionResult<CommonResponse<UpdateTypeResponse>>> Update(
         UpdateTypeRequest request)
@@ -31,7 +33,7 @@ public class TypeController(IContainerApi containerApi) : ControllerBase
         return response;
     }
     
-    
+    [Authorization(2)]
     [HttpDelete("{id}")]
     public async Task<ActionResult<CommonResponse<DeleteTypeResponse>>> Delete(
         [FromRoute] DeleteTypeRequest request)
@@ -41,7 +43,7 @@ public class TypeController(IContainerApi containerApi) : ControllerBase
         return response;
     }
     
-    
+    [Authorization(1,2)]
     [HttpGet("{id}")]
     public async Task<ActionResult<CommonResponse<GetTypeByIdResponse>>> GetById(
         [FromRoute]GetTypeByIdRequest request)
@@ -51,7 +53,7 @@ public class TypeController(IContainerApi containerApi) : ControllerBase
         return response;
     }
 
-
+    [Authorization(1,2)]
     [HttpGet]
     public async Task<ActionResult<CommonResponse<GetAllTypesResponse>>> GetAll(
         [FromQuery] GetAllTypesRequest request)

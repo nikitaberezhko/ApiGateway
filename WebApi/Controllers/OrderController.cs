@@ -4,6 +4,7 @@ using Infrastructure.RefitClients;
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Contracts.Request;
 using OrderService.Contracts.Response;
+using WebApi.Authorization;
 
 namespace WebApi.Controllers;
 
@@ -12,15 +13,17 @@ namespace WebApi.Controllers;
 [ApiVersion(1)]
 public class OrderController(IOrderApi orderApi) : ControllerBase
 {
+    [Authorization(2)]
     [HttpGet]
     public async Task<ActionResult<CommonResponse<GetAllOrdersResponse>>> GetAll(
-        GetAllOrdersRequest request)
+        [FromQuery] GetAllOrdersRequest request)
     {
         var response = await orderApi.GetAllOrders(request);
         
         return response;
     }
     
+    [Authorization(1,2)]
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<CommonResponse<GetOrderByIdResponse>>> GetById(
         [FromRoute] GetOrderByIdRequest request)
@@ -30,6 +33,7 @@ public class OrderController(IOrderApi orderApi) : ControllerBase
         return response;
     }
     
+    [Authorization(1,2)]
     [HttpGet("clients/{clientId:guid}")]
     public async Task<ActionResult<CommonResponse<GetOrdersByClientIdResponse>>> GetByClientId(
         [FromRoute] GetOrdersByClientIdRequest request)
@@ -39,6 +43,7 @@ public class OrderController(IOrderApi orderApi) : ControllerBase
         return response;
     }
 
+    [Authorization(1)]
     [HttpPost]
     public async Task<ActionResult<CommonResponse<CreateOrderResponse>>> Create(
         CreateOrderRequest request)
@@ -48,6 +53,7 @@ public class OrderController(IOrderApi orderApi) : ControllerBase
         return response;
     }
 
+    [Authorization(1)]
     [HttpPut]
     public async Task<ActionResult<CommonResponse<UpdateOrderResponse>>> Update(
         UpdateOrderRequest request)
@@ -57,6 +63,7 @@ public class OrderController(IOrderApi orderApi) : ControllerBase
         return response;
     }
 
+    [Authorization(1,2)]
     [HttpDelete("{id:guid}")]
     public async Task<ActionResult<CommonResponse<DeleteOrderResponse>>> Delete(
         [FromRoute] DeleteOrderRequest request)

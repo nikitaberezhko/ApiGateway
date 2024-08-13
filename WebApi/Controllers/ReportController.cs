@@ -4,6 +4,7 @@ using FinanceService.Contracts.Request;
 using FinanceService.Contracts.Response;
 using Infrastructure.RefitClients;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Authorization;
 
 namespace WebApi.Controllers;
 
@@ -12,6 +13,7 @@ namespace WebApi.Controllers;
 [ApiVersion(1)]
 public class ReportController(IFinanceApi financeApi) : ControllerBase
 {
+    [Authorization(2)]
     [HttpPost]
     public async Task<ActionResult<CommonResponse<GenerateReportResponse>>> Generate(
         GenerateReportRequest request)
@@ -21,6 +23,7 @@ public class ReportController(IFinanceApi financeApi) : ControllerBase
         return response;
     }
 
+    [Authorization(2)]
     [HttpDelete("{id:guid}")]
     public async Task<ActionResult<CommonResponse<DeleteReportResponse>>> Delete(
         [FromRoute] DeleteReportRequest request)
@@ -30,6 +33,7 @@ public class ReportController(IFinanceApi financeApi) : ControllerBase
         return response;
     }
 
+    [Authorization(2)]
     [HttpGet]
     public async Task<ActionResult<CommonResponse<GetAllReportsResponse>>> GetAll(
         [FromQuery] GetAllReportsRequest request)
@@ -39,6 +43,7 @@ public class ReportController(IFinanceApi financeApi) : ControllerBase
         return response;
     }
 
+    [Authorization(2)]
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<CommonResponse<GetReportByIdResponse>>> GetById(
         [FromRoute] GetReportByIdRequest request)

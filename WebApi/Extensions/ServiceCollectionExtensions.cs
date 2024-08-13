@@ -2,6 +2,7 @@ using Asp.Versioning;
 using Infrastructure.RefitClients;
 using Infrastructure.Settings;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Metrics;
 using Refit;
 using WebApi.Middleware;
 
@@ -28,6 +29,26 @@ public static class ServiceCollectionExtensions
 
         return services;
     }
+    
+    public static IServiceCollection AddTelemetry(this IServiceCollection services)
+    {
+        services.AddOpenTelemetry()
+            .WithMetrics(builder =>
+            {
+                builder.AddPrometheusExporter();
+
+                builder.AddMeter("Microsoft.AspNetCore.Hosting",
+                    "Microsoft.AspNetCore.Server.Kestrel");
+                builder.AddView("http.server.request.duration",
+                    new ExplicitBucketHistogramConfiguration
+                    {
+                        Boundaries = [ 0, 0.005, 0.01, 0.025, 0.05,
+                            0.075, 0.1, 0.25, 0.5, 0.75, 1, 2.5, 5, 7.5, 10 ]
+                    });
+            });
+        
+        return services;
+    }
 
     public static IServiceCollection ConfigureRefitClients(
         this IServiceCollection services, IConfiguration configuration)
@@ -35,10 +56,10 @@ public static class ServiceCollectionExtensions
         var refitSettings = configuration.GetSection("RefitClientsSettings")
             .Get<RefitClientsSettings>();
         
-        services.AddRefitClient<IOrderApi>()
-            .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.OrderApiUrl));
         services.AddRefitClient<IIdentityApi>()
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.IdentityApiUrl));
+        services.AddRefitClient<IOrderApi>()
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.OrderApiUrl));
         services.AddRefitClient<IContainerApi>()
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.ContainerApiUrl));
         services.AddRefitClient<IFinanceApi>()

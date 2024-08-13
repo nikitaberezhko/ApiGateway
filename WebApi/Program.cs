@@ -17,7 +17,7 @@ public class Program
         services.ConfigureRefitClients(builder.Configuration);
         services.AddSwagger();
         services.AddExceptionHandling();
-        
+        services.AddTelemetry();
         
 
         var app = builder.Build();
@@ -29,6 +29,8 @@ public class Program
 
         app.UseHttpsRedirection();
 
+        app.MapPrometheusScrapingEndpoint();
+        
         app.MapControllers();
         app.Run();
     }
