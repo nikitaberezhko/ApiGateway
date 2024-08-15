@@ -4,16 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{E95DB827-99DC-4013-8173-CF6A5CF3C1C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Contracts", "IdentityService.Contracts\IdentityService.Contracts.csproj", "{4C7C6618-7EE0-4C4C-98DE-6785E5AA9D92}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Contracts", "OrderService.Contracts\OrderService.Contracts.csproj", "{2376E849-033F-47EE-A216-F9D02D570EE9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceService.Contracts", "FinanceService.Contracts\FinanceService.Contracts.csproj", "{822DDAAB-CC9C-4F06-8AEB-D37204FFF260}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerService.Contracts", "ContainerService.Contracts\ContainerService.Contracts.csproj", "{F49A3F89-55F2-4724-8730-88243BBAF04F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonModel.Contracts", "CommonModel.Contracts\CommonModel.Contracts.csproj", "{471AE88E-503B-4D78-8A58-337B17819496}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88440277-51E2-41E9-B4C7-1402ADEB3883}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
@@ -33,25 +23,5 @@ Global
 		{E95DB827-99DC-4013-8173-CF6A5CF3C1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E95DB827-99DC-4013-8173-CF6A5CF3C1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E95DB827-99DC-4013-8173-CF6A5CF3C1C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C7C6618-7EE0-4C4C-98DE-6785E5AA9D92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C7C6618-7EE0-4C4C-98DE-6785E5AA9D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C7C6618-7EE0-4C4C-98DE-6785E5AA9D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C7C6618-7EE0-4C4C-98DE-6785E5AA9D92}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2376E849-033F-47EE-A216-F9D02D570EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2376E849-033F-47EE-A216-F9D02D570EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2376E849-033F-47EE-A216-F9D02D570EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2376E849-033F-47EE-A216-F9D02D570EE9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{822DDAAB-CC9C-4F06-8AEB-D37204FFF260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{822DDAAB-CC9C-4F06-8AEB-D37204FFF260}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{822DDAAB-CC9C-4F06-8AEB-D37204FFF260}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{822DDAAB-CC9C-4F06-8AEB-D37204FFF260}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F49A3F89-55F2-4724-8730-88243BBAF04F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F49A3F89-55F2-4724-8730-88243BBAF04F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F49A3F89-55F2-4724-8730-88243BBAF04F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F49A3F89-55F2-4724-8730-88243BBAF04F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{471AE88E-503B-4D78-8A58-337B17819496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{471AE88E-503B-4D78-8A58-337B17819496}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{471AE88E-503B-4D78-8A58-337B17819496}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{471AE88E-503B-4D78-8A58-337B17819496}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

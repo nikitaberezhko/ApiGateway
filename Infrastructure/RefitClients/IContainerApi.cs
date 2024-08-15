@@ -3,7 +3,6 @@ using ContainerService.Contracts.Request.Container;
 using ContainerService.Contracts.Request.Type;
 using ContainerService.Contracts.Response.Container;
 using ContainerService.Contracts.Response.Type;
-using FinanceService.Contracts.Request;
 using Refit;
 
 namespace Infrastructure.RefitClients;

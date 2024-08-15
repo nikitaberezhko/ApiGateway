@@ -1,5 +1,4 @@
 using CommonModel.Contracts;
-using FinanceService.Contracts.Request;
 using OrderService.Contracts.Request;
 using OrderService.Contracts.Response;
 using Refit;

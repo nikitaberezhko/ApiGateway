@@ -7,15 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="commonmodel.contracts" Version="1.0.0" />
+      <PackageReference Include="containerservice.contracts" Version="1.0.0" />
+      <PackageReference Include="financeservice.contracts" Version="1.0.0" />
+      <PackageReference Include="identityservice.contracts" Version="1.0.0" />
+      <PackageReference Include="orderservice.contracts" Version="1.0.0" />
       <PackageReference Include="Refit" Version="7.1.2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\CommonModel.Contracts\CommonModel.Contracts.csproj" />
-      <ProjectReference Include="..\ContainerService.Contracts\ContainerService.Contracts.csproj" />
-      <ProjectReference Include="..\FinanceService.Contracts\FinanceService.Contracts.csproj" />
-      <ProjectReference Include="..\IdentityService.Contracts\IdentityService.Contracts.csproj" />
-      <ProjectReference Include="..\OrderService.Contracts\OrderService.Contracts.csproj" />
     </ItemGroup>
 
 </Project>
