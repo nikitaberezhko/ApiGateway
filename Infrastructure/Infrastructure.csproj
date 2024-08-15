@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="commonmodel.contracts" Version="1.0.0" />
+      <PackageReference Include="commonmodel.contracts" Version="1.0.0"/>
       <PackageReference Include="containerservice.contracts" Version="1.0.0" />
       <PackageReference Include="financeservice.contracts" Version="1.0.0" />
       <PackageReference Include="identityservice.contracts" Version="1.0.0" />
