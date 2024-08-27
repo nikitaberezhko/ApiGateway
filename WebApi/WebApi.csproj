@@ -14,11 +14,12 @@
         <PackageReference Include="commonmodel.contracts" Version="1.0.0" />
         <PackageReference Include="containerservice.contracts" Version="1.0.0" />
         <PackageReference Include="financeservice.contracts" Version="1.0.0" />
+        <PackageReference Include="hubservice.contracts" Version="1.0.2" />
         <PackageReference Include="identityservice.contracts" Version="1.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0"/>
         <PackageReference Include="OpenTelemetry.Exporter.Prometheus.AspNetCore" Version="1.9.0-beta.2" />
         <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
-        <PackageReference Include="orderservice.contracts" Version="1.0.0" />
+        <PackageReference Include="orderservice.contracts" Version="1.1.0" />
         <PackageReference Include="Refit" Version="7.1.2" />
         <PackageReference Include="Refit.HttpClientFactory" Version="7.1.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>

@@ -9,4 +9,6 @@ public class RefitClientsSettings
     public string ContainerApiUrl { get; set; }
     
     public string FinanceApiUrl { get; set; }
+    
+    public string HubApiUrl { get; set; }
 }
