@@ -1,7 +1,9 @@
 using CommonModel.Contracts;
 using ContainerService.Contracts.Request.Container;
+using ContainerService.Contracts.Request.Price;
 using ContainerService.Contracts.Request.Type;
 using ContainerService.Contracts.Response.Container;
+using ContainerService.Contracts.Response.Price;
 using ContainerService.Contracts.Response.Type;
 using Refit;
 
@@ -35,7 +37,12 @@ public interface IContainerApi
         GetContainerByIsoRequest request);
     
     
-    
+    // Price
+    [Get("/api/v1/price")]
+    Task<CommonResponse<GetContainersPriceResponse>> GetPrice(
+        [Body] GetContainersPriceRequest request);
+
+
     // Container types
     [Post("/api/v1/container-types")]
     Task<CommonResponse<CreateTypeResponse>> CreateType([Body] CreateTypeRequest request);
