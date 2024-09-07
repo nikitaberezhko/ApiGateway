@@ -35,7 +35,7 @@ public class TypeController(IContainerApi containerApi) : ControllerBase
     }
     
     [Authorization(2)]
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<ActionResult<CommonResponse<DeleteTypeResponse>>> Delete(
         [FromRoute] DeleteTypeRequest request)
     {
@@ -45,7 +45,7 @@ public class TypeController(IContainerApi containerApi) : ControllerBase
     }
     
     [Authorization(1,2)]
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<ActionResult<CommonResponse<GetTypeByIdResponse>>> GetById(
         [FromRoute]GetTypeByIdRequest request)
     {

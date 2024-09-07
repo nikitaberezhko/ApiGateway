@@ -17,6 +17,8 @@ public class Program
         services.ConfigureRefitClients(builder.Configuration);
         services.AddSwagger();
         services.AddExceptionHandling();
+        services.AddCompositeService();
+        services.AddMappers();
         services.AddTelemetry();
         
 

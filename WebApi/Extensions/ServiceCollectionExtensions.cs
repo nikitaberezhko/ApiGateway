@@ -4,6 +4,10 @@ using Infrastructure.Settings;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Metrics;
 using Refit;
+using Services.Mapper;
+using Services.Services;
+using Services.Services.Interfaces;
+using WebApi.Mapper;
 using WebApi.Middleware;
 
 namespace WebApi.Extensions;
@@ -46,6 +50,22 @@ public static class ServiceCollectionExtensions
                             0.075, 0.1, 0.25, 0.5, 0.75, 1, 2.5, 5, 7.5, 10 ]
                     });
             });
+        
+        return services;
+    }
+
+    public static IServiceCollection AddCompositeService(this IServiceCollection services)
+    {
+        services.AddScoped<ICompositeContainerFacade, CompositeContainerFacade>();
+        
+        return services;
+    }
+
+    public static IServiceCollection AddMappers(this IServiceCollection services)
+    {
+        services.AddAutoMapper(
+            typeof(ServiceMappingProfile),
+            typeof(ApiMappingProfile));
         
         return services;
     }

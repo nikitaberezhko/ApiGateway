@@ -1,17 +1,25 @@
 using Asp.Versioning;
+using AutoMapper;
 using CommonModel.Contracts;
 using ContainerService.Contracts.Request.Container;
 using ContainerService.Contracts.Response.Container;
 using Infrastructure.RefitClients;
 using Microsoft.AspNetCore.Mvc;
+using Services.Models.Request;
+using Services.Services.Interfaces;
 using WebApi.Authorization;
+using WebApi.Models.Request;
+using WebApi.Models.Response;
 
 namespace WebApi.Controllers;
 
 [ApiController]
 [Route("api/v{v:apiVersion}/containers")]
 [ApiVersion(1)]
-public class ContainerController(IContainerApi containerApi) : ControllerBase
+public class ContainerController(
+    IContainerApi containerApi,
+    ICompositeContainerFacade compositeContainerFacade,
+    IMapper mapper) : ControllerBase
 {
     [Authorization(2)]
     [HttpPost]
@@ -35,7 +43,7 @@ public class ContainerController(IContainerApi containerApi) : ControllerBase
     }
 
     [Authorization(2)]
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<ActionResult<CommonResponse<DeleteContainerResponse>>> Delete(
         [FromRoute] DeleteContainerRequest request)
     {
@@ -45,11 +53,25 @@ public class ContainerController(IContainerApi containerApi) : ControllerBase
     }
 
     [Authorization(1,2)]
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<ActionResult<CommonResponse<GetContainerByIdResponse>>> GetById(
         [FromRoute] GetContainerByIdRequest request)
     {
         var response = await containerApi.GetContainerById(request);
+        
+        return response;
+    }
+
+    [Authorization(1, 2)]
+    [HttpGet("{id:guid}/types")]
+    public async Task<ActionResult<CommonResponse<GetCompositeContainerResponse>>> 
+        GetCompositeById([FromRoute] GetCompositeContainerRequest request)
+    {
+        var result =
+            await compositeContainerFacade
+                .CompositeContainerWithType(mapper.Map<GetCompositeContainerModel>(request));
+        var response = new CommonResponse<GetCompositeContainerResponse>
+            { Data = mapper.Map<GetCompositeContainerResponse>(result) };
         
         return response;
     }
