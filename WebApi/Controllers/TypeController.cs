@@ -18,7 +18,8 @@ public class TypeController(IContainerApi containerApi) : ControllerBase
     public async Task<ActionResult<CommonResponse<CreateTypeResponse>>> Create(
         CreateTypeRequest request)
     {
-        var response = await containerApi.CreateType(request);
+        var response = new CreatedResult(nameof(Create), 
+            await containerApi.CreateType(request));
         
         return response;
     }

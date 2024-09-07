@@ -16,7 +16,8 @@ public class UserController(IIdentityApi identityApi) : ControllerBase
     public async Task<ActionResult<CommonResponse<CreateUserResponse>>> Create(
         CreateUserRequest request)
     {
-        var response = await identityApi.CreateUser(request);
+        var response = new CreatedResult(nameof(Create), 
+            await identityApi.CreateUser(request));
 
         return response;
     }

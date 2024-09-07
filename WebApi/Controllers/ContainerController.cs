@@ -18,7 +18,8 @@ public class ContainerController(IContainerApi containerApi) : ControllerBase
     public async Task<ActionResult<CommonResponse<CreateContainerResponse>>> Create(
         CreateContainerRequest request)
     {
-        var response = await containerApi.CreateContainer(request);
+        var response = new CreatedResult(nameof(Create), 
+            await containerApi.CreateContainer(request));
         
         return response;
     }

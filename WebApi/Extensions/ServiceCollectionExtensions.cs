@@ -66,6 +66,8 @@ public static class ServiceCollectionExtensions
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.FinanceApiUrl));
         services.AddRefitClient<IHubApi>()
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.HubApiUrl));
+        services.AddRefitClient<ILogisticApi>()
+            .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.LogisticApiUrl));
 
         return services;
     }

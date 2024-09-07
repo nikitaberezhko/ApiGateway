@@ -11,4 +11,6 @@ public class RefitClientsSettings
     public string FinanceApiUrl { get; set; }
     
     public string HubApiUrl { get; set; }
+    
+    public string LogisticApiUrl { get; set; }
 }

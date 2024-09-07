@@ -48,7 +48,8 @@ public class OrderController(IOrderApi orderApi) : ControllerBase
     public async Task<ActionResult<CommonResponse<CreateOrderResponse>>> Create(
         CreateOrderRequest request)
     {
-        var response = await orderApi.CreateOrder(request);
+        var response = new CreatedResult(nameof(Create), 
+            await orderApi.CreateOrder(request));
         
         return response;
     }

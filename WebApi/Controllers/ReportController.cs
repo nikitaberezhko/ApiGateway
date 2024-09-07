@@ -18,7 +18,8 @@ public class ReportController(IFinanceApi financeApi) : ControllerBase
     public async Task<ActionResult<CommonResponse<GenerateReportResponse>>> Generate(
         GenerateReportRequest request)
     {
-        var response = await financeApi.GenerateReport(request);
+        var response = new CreatedResult(nameof(Generate), 
+            await financeApi.GenerateReport(request));
         
         return response;
     }

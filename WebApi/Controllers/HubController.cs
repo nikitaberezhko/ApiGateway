@@ -19,7 +19,8 @@ public class HubController(
     public async Task<ActionResult<CommonResponse<CreateHubResponse>>> Create(
         CreateHubRequest request)
     {
-        var response = await hubApi.CreateHub(request);
+        var response = new CreatedResult(nameof(Create),
+            await hubApi.CreateHub(request));
         
         return response;
     } 

@@ -12,6 +12,7 @@
       <PackageReference Include="financeservice.contracts" Version="1.0.0" />
       <PackageReference Include="hubservice.contracts" Version="1.0.2" />
       <PackageReference Include="identityservice.contracts" Version="1.0.0" />
+      <PackageReference Include="LogisticService.Contracts" Version="1.0.1" />
       <PackageReference Include="orderservice.contracts" Version="1.1.0" />
       <PackageReference Include="Refit" Version="7.1.2" />
     </ItemGroup>
