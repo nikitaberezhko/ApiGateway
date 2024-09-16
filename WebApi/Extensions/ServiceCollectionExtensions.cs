@@ -4,6 +4,7 @@ using Infrastructure.Settings;
 using Microsoft.OpenApi.Models;
 using OpenTelemetry.Metrics;
 using Refit;
+using Serilog;
 using Services.Mapper;
 using Services.Services;
 using Services.Services.Interfaces;
@@ -88,6 +89,16 @@ public static class ServiceCollectionExtensions
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.HubApiUrl));
         services.AddRefitClient<ILogisticApi>()
             .ConfigureHttpClient(c => c.BaseAddress = new Uri(refitSettings!.LogisticApiUrl));
+
+        return services;
+    }
+    
+    public static IServiceCollection ConfigureSerilog(this IServiceCollection services)
+    {
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .CreateLogger();
+        services.AddSerilog();
 
         return services;
     }

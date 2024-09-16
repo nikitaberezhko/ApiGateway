@@ -9,7 +9,6 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         var services = builder.Services;
-        builder.AddSerilog();
 
         services.AddControllers();
         
@@ -21,6 +20,7 @@ public class Program
         services.AddCompositeService();
         services.AddMappers();
         services.AddTelemetry();
+        services.ConfigureSerilog();
         
 
         var app = builder.Build();
