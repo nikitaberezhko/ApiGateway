@@ -25,9 +25,9 @@ public class ApiMappingProfile : Profile
             .ForMember(d => d.IsoNumber, map => map.MapFrom(c => c.IsoNumber))
             .ForMember(d => d.IsEngaged, map => map.MapFrom(c => c.IsEngaged))
             .ForMember(d => d.EngagedUntil, map => map.MapFrom(c => c.EngagedUntil))
-            .ForMember(d => d.Type, map => map.MapFrom(c => c.Type));
+            .ForMember(d => d.GatewayType, map => map.MapFrom(c => c.Type));
         
-        CreateMap<TypeModel, TypeApiModel>()
+        CreateMap<TypeModel, GatewayTypeApiModel>()
             .ForMember(d => d.Id, map => map.MapFrom(c => c.Id))
             .ForMember(d => d.Name, map => map.MapFrom(c => c.Name))
             .ForMember(d => d.PricePerDay, map => map.MapFrom(c => c.PricePerDay));

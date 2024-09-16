@@ -1,6 +1,6 @@
 namespace WebApi.Models.OtherModels;
 
-public class TypeApiModel
+public class GatewayTypeApiModel
 {
     public int Id { get; set; }
 

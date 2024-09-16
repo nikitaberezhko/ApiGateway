@@ -14,5 +14,5 @@ public class GetCompositeContainerResponse
 
     public DateTime? EngagedUntil { get; set; }
     
-    public TypeApiModel Type { get; set; }
+    public GatewayTypeApiModel GatewayType { get; set; }
 }
