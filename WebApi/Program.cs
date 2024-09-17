@@ -23,7 +23,7 @@ public class Program
         services.AddCompositeService();
         services.AddMappers();
         services.AddTelemetry();
-        services.ConfigureSerilogAndZipkinTracing();
+        services.ConfigureSerilogAndZipkinTracing(builder.Configuration);
         
 
         var app = builder.Build();

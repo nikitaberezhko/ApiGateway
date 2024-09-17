@@ -11,6 +11,7 @@ using Services.Services;
 using Services.Services.Interfaces;
 using WebApi.Mapper;
 using WebApi.Middleware;
+using WebApi.Settings;
 
 namespace WebApi.Extensions;
 
@@ -94,12 +95,16 @@ public static class ServiceCollectionExtensions
         return services;
     }
     
-    public static IServiceCollection ConfigureSerilogAndZipkinTracing(this IServiceCollection services)
+    public static IServiceCollection ConfigureSerilogAndZipkinTracing(
+        this IServiceCollection services,
+        IConfiguration configuration)
     {
+        var settings = configuration.GetSection("ZipkinSettings").Get<ZipkinSettings>();
+        
         Log.Logger = new LoggerConfiguration()
-            .Enrich.WithProperty("Application", "ApiGateway")
+            .Enrich.WithProperty("Application", "OrderService")
             .WriteTo.Console()
-            .WriteTo.Zipkin("http://localhost:9411")
+            .WriteTo.Zipkin(settings!.Endpoint)
             .CreateLogger();
         services.AddSerilog();
         
