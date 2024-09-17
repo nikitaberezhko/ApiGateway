@@ -14,7 +14,7 @@ public class ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logg
         }
         catch (ApiException e)
         {
-            logger.LogWarning(e, e.Message);
+            logger.LogWarning($"Api Exception: {e.Message}");
 
             context.Response.Clear();
             context.Response.StatusCode = (int)e.StatusCode;
@@ -23,7 +23,7 @@ public class ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logg
         }
         catch (Exception e)
         {
-            logger.LogCritical(e, e.Message);
+            logger.LogCritical(e, "Unknown server error");
             
             await InterceptResponseAsync(context,
                 "Unknown server error", 

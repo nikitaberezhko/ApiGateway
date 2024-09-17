@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 using OpenTelemetry.Metrics;
 using Refit;
 using Serilog;
+using SerilogTracing;
 using Services.Mapper;
 using Services.Services;
 using Services.Services.Interfaces;
@@ -93,13 +94,15 @@ public static class ServiceCollectionExtensions
         return services;
     }
     
-    public static IServiceCollection ConfigureSerilog(this IServiceCollection services)
+    public static IServiceCollection ConfigureSerilogAndZipkinTracing(this IServiceCollection services)
     {
         Log.Logger = new LoggerConfiguration()
+            .Enrich.WithProperty("Application", "ApiGateway")
             .WriteTo.Console()
+            .WriteTo.Zipkin("http://localhost:9411")
             .CreateLogger();
         services.AddSerilog();
-
+        
         return services;
     }
     

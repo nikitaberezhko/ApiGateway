@@ -1,3 +1,4 @@
+using SerilogTracing;
 using WebApi.Extensions;
 using WebApi.Middleware;
 
@@ -9,6 +10,8 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         var services = builder.Services;
+        using var listener = new ActivityListenerConfiguration()
+            .TraceToSharedLogger();
 
         services.AddControllers();
         
@@ -20,7 +23,7 @@ public class Program
         services.AddCompositeService();
         services.AddMappers();
         services.AddTelemetry();
-        services.ConfigureSerilog();
+        services.ConfigureSerilogAndZipkinTracing();
         
 
         var app = builder.Build();
