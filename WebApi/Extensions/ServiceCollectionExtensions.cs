@@ -102,7 +102,7 @@ public static class ServiceCollectionExtensions
         var settings = configuration.GetSection("ZipkinSettings").Get<ZipkinSettings>();
         
         Log.Logger = new LoggerConfiguration()
-            .Enrich.WithProperty("Application", "OrderService")
+            .Enrich.WithProperty("Application", "ApiGateway")
             .WriteTo.Console()
             .WriteTo.Zipkin(settings!.Endpoint)
             .CreateLogger();
