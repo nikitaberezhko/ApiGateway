@@ -16,7 +16,7 @@ public class Program
         services.AddControllers();
         
         // Extensions
-        services.ConfigureApiVersioning();
+        services.ConfigureApiVersioning()
         services.ConfigureRefitClients(builder.Configuration);
         services.AddSwagger();
         services.AddExceptionHandling();
